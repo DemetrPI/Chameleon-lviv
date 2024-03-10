@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "chameleon-lviv"
+  },
+  "targets": {},
+  "etags": {
+    "chameleon-lviv": {
+      "extensionInstances": {}
+    }
+  }
+}
