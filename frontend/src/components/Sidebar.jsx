@@ -1,12 +1,8 @@
 import {
   IconButton,
-  Avatar,
   Box,
-  Button,
   CloseButton,
   Flex,
-  HStack,
-  VStack,
   Icon,
   useColorModeValue,
   Text,
@@ -14,92 +10,86 @@ import {
   DrawerContent,
   useColorMode,
   useDisclosure,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-} from '@chakra-ui/react'
-import {
-  FiHome,
-  FiStar,
-  FiMenu,
-  FiBell,
-  FiChevronDown,
-} from 'react-icons/fi'
-import { BsEmojiSunglasses,BsMoonStars  } from "react-icons/bs";
-import { GrGallery  } from "react-icons/gr";
+} from "@chakra-ui/react";
+import { FiHome, FiMenu } from "react-icons/fi";
+import { BsEmojiSunglasses, BsMoonStars } from "react-icons/bs";
+import { GrGallery } from "react-icons/gr";
 import { FaMailBulk } from "react-icons/fa";
 import { GiSteeltoeBoots } from "react-icons/gi";
-import { MoonIcon } from '@chakra-ui/icons'
-import All from '../utils/socialLogins';
 
-
-
-const getLinkItems  = (colorMode, toggleColorMode) => [
-  { name: 'Головна', icon: FiHome },
-  { name: 'Галерея', icon: GrGallery },
-  { name: 'Продукція', icon: GiSteeltoeBoots },
-  { name: "Зв'язок", icon: FaMailBulk  },
-  { name: 'Тема', icon: () => <Button onClick={toggleColorMode}>
-  {colorMode === 'dark' ? <BsMoonStars /> : <BsEmojiSunglasses  />}
-</Button> }
+const getLinkItems = (colorMode, toggleColorMode) => [
+  { name: "Головна", icon: FiHome },
+  { name: "Галерея", icon: GrGallery },
+  { name: "Продукція", icon: GiSteeltoeBoots },
+  { name: "Зв'язок", icon: FaMailBulk },
+  {
+    name: "Тема",
+    action: toggleColorMode, // Use an action for theme toggle
+    icon: colorMode === "dark" ? BsEmojiSunglasses : BsMoonStars, // Dynamically set the icon
+  },
 ];
 
 const SidebarContent = ({ onClose, ...rest }) => {
-
-const { colorMode, toggleColorMode } = useColorMode();
-const LinkItems = getLinkItems(colorMode, toggleColorMode);
+  const { colorMode, toggleColorMode } = useColorMode();
+  const LinkItems = getLinkItems(colorMode, toggleColorMode);
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
-      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-      w={{ base: 'full', md: 60 }}
+      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
-      {...rest}>
+      {...rest}
+    >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           Logo
         </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem
+          key={link.name}
+          icon={link.icon}
+          action={link.name === "Тема" ? link.action : undefined}
+        >
           {link.name}
         </NavItem>
       ))}
     </Box>
-  )
-}
+  );
+};
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, children, action, ...rest }) => {
   return (
     <Box
       as="a"
       href="#"
-      style={{ textDecoration: 'none' }}
-      _focus={{ boxShadow: 'none' }}>
+      style={{ textDecoration: "none" }}
+      _focus={{ boxShadow: "none" }}
+    >
       <Flex
         align="center"
         p="4"
         mx="4"
         borderRadius="lg"
         role="group"
+        onClick={action}
         cursor="pointer"
         _hover={{
-          bg: 'cyan.400',
-          color: 'white',
+          bg: "cyan.400",
+          color: "white",
         }}
-        {...rest}>
+        {...rest}
+      >
         {icon && (
           <Icon
             mr="4"
             fontSize="16"
             _groupHover={{
-              color: 'white',
+              color: "white",
             }}
             as={icon}
           />
@@ -107,8 +97,8 @@ const NavItem = ({ icon, children, ...rest }) => {
         {children}
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
 const MobileNav = ({ onOpen, ...rest }) => {
   return (
@@ -117,13 +107,14 @@ const MobileNav = ({ onOpen, ...rest }) => {
       px={{ base: 4, md: 4 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent={{ base: 'space-between', md: 'flex-end' }}
-      {...rest}>
+      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      justifyContent={{ base: "space-between", md: "flex-end" }}
+      {...rest}
+    >
       <IconButton
-        display={{ base: 'flex', md: 'none' }}
+        display={{ base: "flex", md: "none" }}
         onClick={onOpen}
         variant="outline"
         aria-label="open menu"
@@ -131,14 +122,15 @@ const MobileNav = ({ onOpen, ...rest }) => {
       />
 
       <Text
-        display={{ base: 'flex', md: 'none' }}
+        display={{ base: "flex", md: "none" }}
         fontSize="2xl"
         fontFamily="monospace"
-        fontWeight="bold">
+        fontWeight="bold"
+      >
         Logo
       </Text>
 
-      <HStack spacing={{ base: '0', md: '6' }}>
+      {/* <HStack spacing={{ base: '0', md: '6' }}>
         <IconButton size="lg" variant="ghost" aria-label="open menu" icon={<FiBell />} />
         <Flex alignItems={'center'}>
           <Menu>
@@ -177,24 +169,28 @@ const MobileNav = ({ onOpen, ...rest }) => {
             </MenuList>
           </Menu>
         </Flex>
-      </HStack>
+      </HStack> */}
     </Flex>
-  )
-}
+  );
+};
 
-const Sidebar = ({children}) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+const Sidebar = ({ children }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
+    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+      <SidebarContent
+        onClose={() => onClose}
+        display={{ base: "none", md: "block" }}
+      />
       <Drawer
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
+        size="full"
+      >
         <DrawerContent>
           <SidebarContent onClose={onClose} />
         </DrawerContent>
@@ -205,8 +201,7 @@ const Sidebar = ({children}) => {
         {children} {/* All app components are imported in Index.js */}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-
-export default Sidebar
+export default Sidebar;
