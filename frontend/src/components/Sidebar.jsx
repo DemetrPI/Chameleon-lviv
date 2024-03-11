@@ -22,27 +22,27 @@ import {
 } from '@chakra-ui/react'
 import {
   FiHome,
-  FiTrendingUp,
-  FiCompass,
   FiStar,
-  FiSettings,
   FiMenu,
   FiBell,
   FiChevronDown,
 } from 'react-icons/fi'
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { BsEmojiSunglasses,BsMoonStars  } from "react-icons/bs";
+import { GrGallery  } from "react-icons/gr";
+import { FaMailBulk } from "react-icons/fa";
+import { GiSteeltoeBoots } from "react-icons/gi";
+import { MoonIcon } from '@chakra-ui/icons'
 import All from '../utils/socialLogins';
 
 
 
 const getLinkItems  = (colorMode, toggleColorMode) => [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
-  { name: 'Theme', icon: () => <Button onClick={toggleColorMode}>
-  {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+  { name: 'Головна', icon: FiHome },
+  { name: 'Галерея', icon: GrGallery },
+  { name: 'Продукція', icon: GiSteeltoeBoots },
+  { name: "Зв'язок", icon: FaMailBulk  },
+  { name: 'Тема', icon: () => <Button onClick={toggleColorMode}>
+  {colorMode === 'dark' ? <BsMoonStars /> : <BsEmojiSunglasses  />}
 </Button> }
 ];
 

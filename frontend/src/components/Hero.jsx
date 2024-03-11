@@ -27,7 +27,7 @@ export default function MainHero() {
                 bg: 'blue.400',
                 zIndex: -1,
               }}>
-              Freelance
+              Chameleon
             </Text>
             <br />{' '}
             <Text color={'blue.400'} as={'span'}>
