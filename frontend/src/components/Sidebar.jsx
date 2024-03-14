@@ -1,3 +1,4 @@
+import { Link as ScrollLink } from 'react-scroll';
 import {
   IconButton,
   Box,
@@ -18,12 +19,12 @@ import { FaMailBulk } from "react-icons/fa";
 import { GiSteeltoeBoots } from "react-icons/gi";
 
 const getLinkItems = (colorMode, toggleColorMode) => [
-  { name: "Головна", icon: FiHome },
-  { name: "Галерея", icon: GrGallery },
-  { name: "Продукція", icon: GiSteeltoeBoots },
-  { name: "Зв'язок", icon: FaMailBulk },
+  { name: "Головна", icon: FiHome, path: "home" }, // Adjust path for scrolling
+  { name: "Галерея", icon: GrGallery, path: "testimonials" }, // Adjust path for scrolling
+  { name: "Продукція", icon: GiSteeltoeBoots, path: "features" }, // Adjust path for scrolling
+  { name: "Зв'язок", icon: FaMailBulk, path: "contacts" }, // Adjust path for scrolling
   {
-    name: "Тема",
+    name: "Тема", // Theme
     action: toggleColorMode, // Use an action for theme toggle
     icon: colorMode === "dark" ? BsEmojiSunglasses : BsMoonStars, // Dynamically set the icon
   },
@@ -53,6 +54,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <NavItem
           key={link.name}
           icon={link.icon}
+          path={link.path} // Add this line
           action={link.name === "Тема" ? link.action : undefined}
         >
           {link.name}
@@ -61,22 +63,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
     </Box>
   );
 };
-
-const NavItem = ({ icon, children, action, ...rest }) => {
-  return (
-    <Box
-      as="a"
-      href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
+const NavItem = ({ icon, children, action, path, ...rest }) => {
+  if (action) {
+    return (
       <Flex
         align="center"
         p="4"
         mx="4"
         borderRadius="lg"
         role="group"
-        onClick={action}
+        onClick={action} // Handle theme toggle or other actions
         cursor="pointer"
         _hover={{
           bg: "cyan.400",
@@ -96,8 +92,45 @@ const NavItem = ({ icon, children, action, ...rest }) => {
         )}
         {children}
       </Flex>
-    </Box>
-  );
+    );
+  } else {
+    return (
+      <ScrollLink
+        to={path} // path is the id of the section to scroll to
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+        style={{ textDecoration: "none" }}
+      >
+        <Flex
+          align="center"
+          p="4"
+          mx="4"
+          borderRadius="lg"
+          role="group"
+          cursor="pointer"
+          _hover={{
+            bg: "cyan.400",
+            color: "white",
+          }}
+          {...rest}
+        >
+          {icon && (
+            <Icon
+              mr="4"
+              fontSize="16"
+              _groupHover={{
+                color: "white",
+              }}
+              as={icon}
+            />
+          )}
+          {children}
+        </Flex>
+      </ScrollLink>
+    );
+  }
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {

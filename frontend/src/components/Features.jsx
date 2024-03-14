@@ -99,8 +99,10 @@ const cardsData = [
     rightImage: image7After,
   },
 ];
-export default function Features() {
+export default function Features({id}) {
   return (
+    <section id={id} style={{ scrollSnapAlign: "start" }}>
+
     <Box p={4}>
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
@@ -132,5 +134,6 @@ export default function Features() {
         </Flex>
       </Container>
     </Box>
+</section>
   );
 }

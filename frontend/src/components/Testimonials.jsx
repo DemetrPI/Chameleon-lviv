@@ -87,7 +87,7 @@ const TestimonialAvatar = ({
     </Flex>
   )
 }
-export default function Testimonials() {
+export default function Testimonials({id}) {
   const testimonials = [
     {
       heading: 'Efficiency',
@@ -127,6 +127,8 @@ export default function Testimonials() {
   ];
 
   return (
+    <section id={id} style={{ scrollSnapAlign: "start" }}>
+
     <Box>
       <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={'center'}>
@@ -154,5 +156,6 @@ export default function Testimonials() {
         </Stack>
       </Container>
     </Box>
+  </section>
   )
 }
