@@ -37,7 +37,7 @@ export default function MainHero({id}) {
                   zIndex: -1,
                 }}
               >
-                Chameleon
+                Cameleon
               </Text>
               <br />{" "}
               <Text color={"blue.400"} as={"span"}>
