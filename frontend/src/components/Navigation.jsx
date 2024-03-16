@@ -18,7 +18,7 @@ const containerStyle = {
 
 const Map = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: ApiKey,
+    googleMapsApiKey:process.env.REACT_APP_GOOGLE_API_KEY,
   });
 
   const center = useMemo(
