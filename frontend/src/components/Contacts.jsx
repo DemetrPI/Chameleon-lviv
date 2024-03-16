@@ -20,22 +20,21 @@ import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
 import Map from "./Navigation";
 
-
 export default function Contacts({ id }) {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
 
   return (
     <section id={id} style={{ scrollSnapAlign: "start" }}>
-              <Heading
-                fontSize={{
-                  base: "4xl",
-                  md: "5xl",
-                }}
-                align="center"
-              >
-                Як нас знайти
-              </Heading>
-<Map/>
+      <Heading
+        fontSize={{
+          base: "4xl",
+          md: "5xl",
+        }}
+        align="center"
+      >
+        Як нас знайти
+      </Heading>
+      <Map />
       <Flex
         bg={useColorModeValue("gray.100", "gray.900")}
         align="center"

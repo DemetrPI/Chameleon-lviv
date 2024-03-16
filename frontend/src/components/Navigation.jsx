@@ -22,9 +22,6 @@ const center = {
 };
 
 function Map() {
-
-
-  
   return (
     <Wrapper apiKey={ApiKey}>
       <GoogleMap
@@ -32,9 +29,7 @@ function Map() {
         center={center}
         zoom={18}
         mapId={"mapId"}
-      >
-
-      </GoogleMap>
+      ></GoogleMap>
     </Wrapper>
   );
 }
