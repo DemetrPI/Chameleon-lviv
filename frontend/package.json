@@ -15,7 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@vis.gl/react-google-maps": "^0.7.1",
     "dotenv": "^16.4.5",
-    "framer-motion": "^11.0.8",
+    "framer-motion": "^11.0.14",
     "google-maps-react-markers": "^2.0.8",
     "react": "^18.2.0",
     "react-compare-image": "^3.4.0",
