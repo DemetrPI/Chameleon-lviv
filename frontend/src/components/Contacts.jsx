@@ -1,3 +1,4 @@
+
 import {
   Box,
   Button,
@@ -12,7 +13,6 @@ import {
   Stack,
   Textarea,
   Tooltip,
-  useClipboard,
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
@@ -21,7 +21,6 @@ import { MdEmail, MdOutlineEmail } from "react-icons/md";
 import Map from "./Navigation";
 
 export default function Contacts({ id }) {
-  const { hasCopied, onCopy } = useClipboard("example@example.com");
 
   return (
     <section id={id} style={{ scrollSnapAlign: "start" }}>
@@ -34,7 +33,7 @@ export default function Contacts({ id }) {
       >
         Як нас знайти
       </Heading>
-      <Map />
+     <Map/>
       <Flex
         bg={useColorModeValue("gray.100", "gray.900")}
         align="center"
@@ -58,7 +57,7 @@ export default function Contacts({ id }) {
                   direction={{ base: "row", md: "column" }}
                 >
                   <Tooltip
-                    label={hasCopied ? "Email Copied!" : "Copy Email"}
+             
                     closeOnClick={false}
                     hasArrow
                   >
@@ -72,7 +71,7 @@ export default function Contacts({ id }) {
                         bg: "blue.500",
                         color: useColorModeValue("white", "gray.700"),
                       }}
-                      onClick={onCopy}
+       
                       isRound
                     />
                   </Tooltip>
