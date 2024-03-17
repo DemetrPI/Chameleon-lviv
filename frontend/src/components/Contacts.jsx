@@ -1,4 +1,3 @@
-
 import {
   Box,
   Button,
@@ -16,12 +15,12 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
-import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
-import { MdEmail, MdOutlineEmail } from "react-icons/md";
+import { FaViber, FaTelegramPlane } from "react-icons/fa";
+import { BsPerson,BsFacebook  } from "react-icons/bs";
+import { MdWhatsapp, MdOutlineEmail } from "react-icons/md";
 import Map from "./Navigation";
 
 export default function Contacts({ id }) {
-
   return (
     <section id={id} style={{ scrollSnapAlign: "start" }}>
       <Heading
@@ -30,10 +29,11 @@ export default function Contacts({ id }) {
           md: "5xl",
         }}
         align="center"
+        color={"pink.500"}
       >
         Як нас знайти
       </Heading>
-     <Map/>
+      <Map />
       <Flex
         bg={useColorModeValue("gray.100", "gray.900")}
         align="center"
@@ -56,22 +56,17 @@ export default function Contacts({ id }) {
                   justify="space-around"
                   direction={{ base: "row", md: "column" }}
                 >
-                  <Tooltip
-             
-                    closeOnClick={false}
-                    hasArrow
-                  >
+                  <Tooltip closeOnClick={false} hasArrow>
                     <IconButton
                       aria-label="email"
                       variant="ghost"
                       size="lg"
                       fontSize="3xl"
-                      icon={<MdEmail />}
+                      icon={<BsFacebook />}
                       _hover={{
-                        bg: "blue.500",
+                        bg: "pink.500",
                         color: useColorModeValue("white", "gray.700"),
                       }}
-       
                       isRound
                     />
                   </Tooltip>
@@ -82,9 +77,9 @@ export default function Contacts({ id }) {
                       variant="ghost"
                       size="lg"
                       fontSize="3xl"
-                      icon={<BsGithub />}
+                      icon={<FaViber />}
                       _hover={{
-                        bg: "blue.500",
+                        bg: "pink.500",
                         color: useColorModeValue("white", "gray.700"),
                       }}
                       isRound
@@ -96,9 +91,9 @@ export default function Contacts({ id }) {
                       aria-label="twitter"
                       variant="ghost"
                       size="lg"
-                      icon={<BsTwitter size="28px" />}
+                      icon={<MdWhatsapp size="28px" />}
                       _hover={{
-                        bg: "blue.500",
+                        bg: "pink.500",
                         color: useColorModeValue("white", "gray.700"),
                       }}
                       isRound
@@ -110,9 +105,9 @@ export default function Contacts({ id }) {
                       aria-label="linkedin"
                       variant="ghost"
                       size="lg"
-                      icon={<BsLinkedin size="28px" />}
+                      icon={<FaTelegramPlane size="28px" />}
                       _hover={{
-                        bg: "blue.500",
+                        bg: "pink.500",
                         color: useColorModeValue("white", "gray.700"),
                       }}
                       isRound
@@ -129,7 +124,7 @@ export default function Contacts({ id }) {
                 >
                   <VStack spacing={5}>
                     <FormControl isRequired>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel>Ваше ім'я</FormLabel>
 
                       <InputGroup>
                         <InputLeftElement>
@@ -138,7 +133,7 @@ export default function Contacts({ id }) {
                         <Input
                           type="text"
                           name="name"
-                          placeholder="Your Name"
+                          placeholder="Ваше ім'я"
                         />
                       </InputGroup>
                     </FormControl>
@@ -153,32 +148,32 @@ export default function Contacts({ id }) {
                         <Input
                           type="email"
                           name="email"
-                          placeholder="Your Email"
+                          placeholder="Ваша електронна пошта"
                         />
                       </InputGroup>
                     </FormControl>
 
                     <FormControl isRequired>
-                      <FormLabel>Message</FormLabel>
+                      <FormLabel>Текст повідомлення</FormLabel>
 
                       <Textarea
                         name="message"
-                        placeholder="Your Message"
+                        placeholder="Текст повідомлення"
                         rows={6}
                         resize="none"
                       />
                     </FormControl>
 
                     <Button
-                      colorScheme="blue"
-                      bg="blue.400"
+                      colorScheme="pink"
+                      bg="pink.400"
                       color="white"
                       _hover={{
-                        bg: "blue.500",
+                        bg: "pink.500",
                       }}
                       width="full"
                     >
-                      Send Message
+                     Надіслати нам листа!
                     </Button>
                   </VStack>
                 </Box>

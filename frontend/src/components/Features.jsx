@@ -16,50 +16,12 @@ import image7After from "../assets/image7_after.jpg";
 import ImageCompare from "../utils/sliderBeforeAfter";
 import {
   Box,
-  Button,
   Container,
   Flex,
   Heading,
   Stack,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
-
-const Card = ({ heading, description, icon }) => {
-  return (
-    <Box
-      maxW={{ base: "full", md: "275px" }}
-      w={"full"}
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      p={5}
-    >
-      <Stack align={"start"} spacing={2}>
-        <Flex
-          w={16}
-          h={16}
-          align={"center"}
-          justify={"center"}
-          color={"white"}
-          rounded={"full"}
-          bg={useColorModeValue("gray.100", "gray.700")}
-        >
-          {icon}
-        </Flex>
-        <Box mt={2}>
-          <Heading size="md">{heading}</Heading>
-          <Text mt={1} fontSize={"sm"}>
-            {description}
-          </Text>
-        </Box>
-        <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
-          Learn more
-        </Button>
-      </Stack>
-    </Box>
-  );
-};
 
 const cardsData = [
   {
@@ -104,24 +66,23 @@ export default function Features({id}) {
     <section id={id} style={{ scrollSnapAlign: "start" }}>
 
     <Box p={4}>
-      <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
-        <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
-          Наші послуги
+      <Stack spacing={2} as={Container} maxW={"4xl"} textAlign={"center"}>
+        <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"} color={"pink.500"}>
+          Продукція і послуги
         </Heading>
-        <Text color={"gray.600"} fontSize={{ base: "sm", sm: "lg" }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-          obcaecati ut cupiditate pariatur, dignissimos, placeat amet officiis.
+        <Text color={"gray.600"} fontSize={{ base: "sm", sm: "lg" }} textAlign={"justify"}>
+        Продукція європейского бренду CAMELION - ваш надійний помічник у відновленні будь-яких речей. Професійна чистка та фарбування шкіри допоможе повернути їх до життя швидко, якісно і недорого. Також ми пропонуємо широкий асортимент нашої продукції  по догляду за шкірою у домашніх умовах. Лінія  фарб CAMELION для гладкої шкіри дозволяє швидко відновити або кардинально змінити зовнішній вигляд виробів, продовжити термін служби улюблених речей або дати друге життя безнадійно на перший погляд Вашим  зношеним речам. Після фарбування нашою фарбою вони виглядатимуть  як нові, а зношена сумка,черевики,куртка тощо —  стає кардинально оновленою. Структура шкіри глибоко просочується, завдяки чому стає можливим не тільки фарбування вироби в «рідний» колір, але й його перефарбування в будь-який інший колір.
         </Text>
       </Stack>
-
       <Container maxW={"5xl"} mt={12}>
-        <Flex flexWrap="wrap" justifyContent={"center"} gap={6}>
+        <Flex flexWrap="wrap" justifyContent={"center"} gap={4}>
           {cardsData.map(({ id, leftImage, rightImage }) => (
             <Box
               key={id}
               borderWidth="1px"
-              borderRadius="lg"
+              borderRadius="5%"
               overflow="hidden"
+              boxShadow={"8px 8px 24px 0px rgba(66, 68, 90, 1);"}
               m={2} // Adjust margin as necessary for spacing
               p={4} // Padding inside the box, adjust as necessary
               maxW={{ base: "full", md: "275px" }} // Adjust max width as necessary

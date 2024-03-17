@@ -132,8 +132,8 @@ export default function Testimonials({id}) {
     <Box>
       <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={'center'}>
-          <Heading>Відгуки кліентів</Heading>
-          <Text>We have been working with clients around the world</Text>
+          <Heading color={"pink.500"}>Відгуки кліентів</Heading>
+          <Text>Що про нас кажуть наші кліенти і покупці</Text>
         </Stack>
         <Stack
           direction={{ base: 'column', md: 'row' }}
