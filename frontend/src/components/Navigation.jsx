@@ -36,7 +36,6 @@ useEffect(() => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: center,
       zoom: 18,
-      mapId: "178b1a54ab040efa",
     });
 
      const marker = new window.google.maps.Marker({
