@@ -23,6 +23,9 @@ import "../assets/text-colors.css"
 
 const phoneNumber = '%2B48733415979'; // Replace with your phone number
 const viberLink = `viber://chat?number=${phoneNumber}`;
+const whatsappLink = `https://wa.me/${phoneNumber}`;
+const telegramLink = `https://t.me/${phoneNumber}`;
+
 
 export default function Contacts({ id }) {
 
@@ -78,7 +81,7 @@ export default function Contacts({ id }) {
 
                   <Box as="a" href={viberLink} target="_blank" rel="noopener noreferrer">
                     <IconButton
-                      aria-label="github"
+                      aria-label="viber"
                       variant="ghost"
                       size="lg"
                       fontSize="3xl"
@@ -91,9 +94,9 @@ export default function Contacts({ id }) {
                     />
                   </Box>
 
-                  <Box as="a" href="#">
+                  <Box as="a" href={whatsappLink} target="_blank" rel="noopener noreferrer">
                     <IconButton
-                      aria-label="twitter"
+                      aria-label="whatsapp"
                       variant="ghost"
                       size="lg"
                       icon={<MdWhatsapp size="28px" />}
@@ -105,9 +108,9 @@ export default function Contacts({ id }) {
                     />
                   </Box>
 
-                  <Box as="a" href="#">
+                  <Box as="a" href={telegramLink} target="_blank" rel="noopener noreferrer">
                     <IconButton
-                      aria-label="linkedin"
+                      aria-label="telegram"
                       variant="ghost"
                       size="lg"
                       icon={<FaTelegramPlane size="28px" />}
