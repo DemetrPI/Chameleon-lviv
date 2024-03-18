@@ -21,7 +21,7 @@ import { MdWhatsapp, MdOutlineEmail } from "react-icons/md";
 import Map from "./Map";
 import "../assets/text-colors.css"
 
-const phoneNumber = '%2B48733415979'; // Replace with your phone number
+const phoneNumber = '%2B380673251237'; // Replace with your phone number
 const viberLink = `viber://chat?number=${phoneNumber}`;
 const whatsappLink = `https://wa.me/${phoneNumber}`;
 const telegramLink = `https://t.me/${phoneNumber}`;

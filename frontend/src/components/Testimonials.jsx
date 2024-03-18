@@ -1,3 +1,8 @@
+import customer1 from "../assets/customers/1.jpg"
+import customer2 from "../assets/customers/2.jpg"
+import customer3 from "../assets/customers/3.jpg"
+import customer4 from "../assets/customers/4.jpg"
+import customer5 from "../assets/customers/5.jpg"
 import {
   Box,
   Flex,
@@ -88,44 +93,40 @@ const TestimonialAvatar = ({ src, name, title }) => {
 export default function Testimonials({ id }) {
   const testimonials = [
     {
-      heading: "Efficiency",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-      imgSrc:
-        "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
-      name: "Jane Cooper",
-      title: "CEO at ABC Corporation",
+      heading: "Ефективно!",
+      text: "Чудова робота! Мої черевики виглядають як нові.",
+      imgSrc: customer1,
+      name: "Валерія Ш.",
+      title: "Вінниця",
     },
     {
-      heading: "Collaborating",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-      imgSrc:
-        "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
-      name: "Jane Cooper",
-      title: "CEO at ABC Corporation",
+      heading: "Швидко!",
+      text: "Швидко і якісно, приємно здивован ціною. Рекомендую!",
+ 
+      imgSrc: customer2,
+        name: "Максим К.",
+      title: "Львів",
     },
     {
-      heading: "Design",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-      imgSrc:
-        "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
-      name: "Jane Cooper",
-      title: "CEO at ABC Corporation",
+      heading: "Результативно!",
+      text: "Здивована результатом, взуття як з магазину.",
+      imgSrc: customer3,
+      name: "Катерина К.",
+      title: "Тернопіль",
     },
     {
-      heading: "Respectfullness",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-      imgSrc:
-        "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
-      name: "Jane Cooper",
-      title: "CEO at ABC Corporation",
+      heading: "Неймовірно!",
+      text: "Неймовірне перевтілення старих кедів. Дуже вражен!",
+      imgSrc: customer4,
+      name: "Дмитро П.",
+      title: "Львів",
     },
     {
-      heading: "Bla-Bla-Bla",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-      imgSrc:
-        "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
-      name: "Jane Cooper",
-      title: "CEO at ABC Corporation",
+      heading: "Професійно.",
+      text: "Професійно та швидко відновили мою улюблену сумку.",
+      imgSrc: customer5,
+      name: "Олена К.",
+      title: "Львів",
     },
   ];
 
