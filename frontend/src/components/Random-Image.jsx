@@ -1,13 +1,11 @@
 import "../../src/assets/random-image.css"
 import React, { useEffect, useState } from 'react';
-import firstimage from '../../src/assets/image_50436353.jpg'
-import secondimage from '../../src/assets/image_67176961.jpg'
-import thirdimage from '../../src/assets/image_67218689.jpg'
 
-const imagesArray = [
-  firstimage, secondimage, thirdimage
-  // Add more image paths as needed
-];
+
+// const imagesArray = [
+//   firstimage, secondimage, thirdimage
+//   // Add more image paths as needed
+// ];
 
 const RandomImages = () => {
 //   const [visibleImages, setVisibleImages] = useState([]);

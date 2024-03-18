@@ -1,17 +1,23 @@
-import image1Before from "../assets/image1_before.jpg";
-import image1After from "../assets/image1_after.jpg";
-import image2Before from "../assets/image2_before.jpg";
-import image2After from "../assets/image2_after.jpg";
-import image3Before from "../assets/image3_before.jpg";
-import image3After from "../assets/image3_after.jpg";
-import image4Before from "../assets/image4_before.jpg";
-import image4After from "../assets/image4_after.jpg";
-import image5Before from "../assets/image5_before.jpg";
-import image5After from "../assets/image5_after.jpg";
-import image6Before from "../assets/image6_before.jpg";
-import image6After from "../assets/image6_after.jpg";
-import image7Before from "../assets/image7_before.jpg";
-import image7After from "../assets/image7_after.jpg";
+import image1Before from "../assets/before-after/image1_before.jpg";
+import image1After from "../assets/before-after/image1_after.jpg";
+import image2Before from "../assets/before-after/image2_before.jpg";
+import image2After from "../assets/before-after/image2_after.jpg";
+import image3Before from "../assets/before-after/image3_before.jpg";
+import image3After from "../assets/before-after/image3_after.jpg";
+import image4Before from "../assets/before-after/image4_before.jpg";
+import image4After from "../assets/before-after/image4_after.jpg";
+import image5Before from "../assets/before-after/image5_before.jpg";
+import image5After from "../assets/before-after/image5_after.jpg";
+import image6Before from "../assets/before-after/image6_before.jpg";
+import image6After from "../assets/before-after/image6_after.jpg";
+import image7Before from "../assets/before-after/image7_before.jpg";
+import image7After from "../assets/before-after/image7_after.jpg";
+import image8Before from "../assets/before-after/image8_before.jpg";
+import image8After from "../assets/before-after/image8_after.jpg";
+import image9Before from "../assets/before-after/image9_before.jpg";
+import image9After from "../assets/before-after/image9_after.jpg";
+
+
 import ImageCompare from "../utils/sliderBeforeAfter";
 import "../assets/text-colors.css"
 import {
@@ -60,6 +66,18 @@ const cardsData = [
     leftImage: image7Before,
     rightImage: image7After,
   },
+  {
+    id: 8,
+    leftImage: image8Before,
+    rightImage: image8After,
+  },
+  {
+    id: 9,
+    leftImage: image9Before,
+    rightImage: image9After,
+  },
+  
+
 ];
 export default function Features({id}) {
   return (
