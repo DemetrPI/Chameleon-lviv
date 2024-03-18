@@ -21,7 +21,11 @@ import { MdWhatsapp, MdOutlineEmail } from "react-icons/md";
 import Map from "./Map";
 import "../assets/text-colors.css"
 
+const phoneNumber = '%2B48733415979'; // Replace with your phone number
+const viberLink = `viber://chat?number=${phoneNumber}`;
+
 export default function Contacts({ id }) {
+
   return (
     <section id={id} style={{ scrollSnapAlign: "start" }}>
       <Heading
@@ -72,7 +76,7 @@ export default function Contacts({ id }) {
                     />
                   </Tooltip>
 
-                  <Box as="a" href="#">
+                  <Box as="a" href={viberLink} target="_blank" rel="noopener noreferrer">
                     <IconButton
                       aria-label="github"
                       variant="ghost"
