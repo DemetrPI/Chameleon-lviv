@@ -59,6 +59,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           path={link.path}
           action={link.name === "Тема" ? link.action : undefined}
           onClose={onClose}
+          
         >
           {link.name}
         </NavItem>
@@ -88,7 +89,7 @@ const NavItem = ({ icon, children, action, path, onClose, ...rest }) => {
         onClick={handleClick}
         cursor="pointer"
         _hover={{
-          bg: "pink.500",
+          bg: "linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%);",
           color: "white",
         }}
         {...rest}
@@ -125,7 +126,7 @@ const NavItem = ({ icon, children, action, path, onClose, ...rest }) => {
           role="group"
           cursor="pointer"
           _hover={{
-            bg: "pink.500",
+            bg: "linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%);",
             color: "white",
           }}
           {...rest}

@@ -12,8 +12,8 @@ import image6Before from "../assets/image6_before.jpg";
 import image6After from "../assets/image6_after.jpg";
 import image7Before from "../assets/image7_before.jpg";
 import image7After from "../assets/image7_after.jpg";
-
 import ImageCompare from "../utils/sliderBeforeAfter";
+import "../assets/text-colors.css"
 import {
   Box,
   Container,
@@ -67,10 +67,10 @@ export default function Features({id}) {
 
     <Box p={4}>
       <Stack spacing={2} as={Container} maxW={"4xl"} textAlign={"center"}>
-        <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"} color={"pink.500"}>
+        <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"} className="text-colors">
           Продукція і послуги
         </Heading>
-        <Text color={"gray.600"} fontSize={{ base: "sm", sm: "lg" }} textAlign={"justify"}>
+        <Text fontSize={{ base: "sm", sm: "lg" }} textAlign={"justify"}>
         Продукція європейского бренду CAMELION - ваш надійний помічник у відновленні будь-яких речей. Професійна чистка та фарбування шкіри допоможе повернути їх до життя швидко, якісно і недорого. Також ми пропонуємо широкий асортимент нашої продукції  по догляду за шкірою у домашніх умовах. Лінія  фарб CAMELION для гладкої шкіри дозволяє швидко відновити або кардинально змінити зовнішній вигляд виробів, продовжити термін служби улюблених речей або дати друге життя безнадійно на перший погляд Вашим  зношеним речам. Після фарбування нашою фарбою вони виглядатимуть  як нові, а зношена сумка,черевики,куртка тощо —  стає кардинально оновленою. Структура шкіри глибоко просочується, завдяки чому стає можливим не тільки фарбування вироби в «рідний» колір, але й його перефарбування в будь-який інший колір.
         </Text>
       </Stack>

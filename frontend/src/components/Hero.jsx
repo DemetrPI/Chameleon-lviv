@@ -1,6 +1,7 @@
 import React from "react";
 import chameleonBlack from "../assets/chameleon_black.jpg";
 import chameleonWhite from "../assets/chameleon.jpg";
+import "../assets/text-colors.css"
 import {
   Flex,
   Heading,
@@ -79,10 +80,10 @@ export default function MainHero({ id }) {
                   zIndex: -1,
                 }}
               >
-                Chameleon
+                Cameleon
               </Text>
               <br />
-              <Text color={"pink.500"} as={"span"}>
+              <Text className="text-colors" as={"span"} fontSize={{base: "2xl", md: "3xl", lg: "4.5xl"}}>
                 Майстерня з відновлення взуття
               </Text>
             </Heading>

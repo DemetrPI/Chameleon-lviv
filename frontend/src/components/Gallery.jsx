@@ -10,7 +10,7 @@ function importAll(r) {
 const images = importAll(require.context('../assets/carousel-photos', false, /\.(png|jpe?g|svg)$/));
 
 
-const Carousel = () => {
+const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(null);
 
@@ -89,7 +89,7 @@ const Carousel = () => {
           textAlign={"center"}
           fontWeight={"bold"}
         >
-          <Heading fontSize={{ base: "2xl", sm: "4xl" }} mt={6} mb={6} color={"pink.500"}>
+          <Heading fontSize={{ base: "2xl", sm: "4xl" }} mt={6} mb={6} className="text-colors">
             Галерея
           </Heading>
 
@@ -155,4 +155,4 @@ const Carousel = () => {
     </section>
   );
 };
-export default Carousel;
+export default Gallery;

@@ -18,7 +18,8 @@ import {
 import { FaViber, FaTelegramPlane } from "react-icons/fa";
 import { BsPerson,BsFacebook  } from "react-icons/bs";
 import { MdWhatsapp, MdOutlineEmail } from "react-icons/md";
-import Map from "./Navigation";
+import Map from "./Map";
+import "../assets/text-colors.css"
 
 export default function Contacts({ id }) {
   return (
@@ -29,7 +30,7 @@ export default function Contacts({ id }) {
           md: "5xl",
         }}
         align="center"
-        color={"pink.500"}
+        className="text-colors"
       >
         Як нас знайти
       </Heading>
@@ -165,8 +166,7 @@ export default function Contacts({ id }) {
                     </FormControl>
 
                     <Button
-                      colorScheme="pink"
-                      bg="pink.400"
+                      bg="linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%);"
                       color="white"
                       _hover={{
                         bg: "pink.500",

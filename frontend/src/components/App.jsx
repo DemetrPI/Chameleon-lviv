@@ -5,7 +5,7 @@ import Features from "./Features";
 import Testimonials from "./Testimonials";
 import Contacts from "./Contacts";
 import RandomImages from "./Random-Image";
-import Carousel from "./Carousel";
+import Gallery from "./Gallery";
 import Footer from "./Footer";
 
 
@@ -16,7 +16,7 @@ function App() {
     <Sidebar>
       <MainHero id="home" />
       <Features id="features" />
-      <Carousel id="gallery" />
+      <Gallery id="gallery" />
       <Testimonials id="testimonials" />
       <Contacts id="contacts" />
       <Footer/>

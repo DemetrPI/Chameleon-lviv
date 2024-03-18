@@ -1,0 +1,6 @@
+
+.text-colors {background: #00950E;
+    background: linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
