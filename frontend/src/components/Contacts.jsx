@@ -1,33 +1,99 @@
+import { useRef, useState } from "react";
+import { validateEmail } from "../utils/validateEmail";
+import emailjs from "@emailjs/browser";
+import {
+  EmailJSPublicKey,
+  EmailJSServiceID,
+  EmailJSTemplateID,
+} from "../utils/googleMapAPIKey";
 import {
   Box,
   Button,
   Flex,
   FormControl,
   FormLabel,
-  Heading,
-  IconButton,
+  FormErrorMessage,
   Input,
   InputGroup,
   InputLeftElement,
   Stack,
   Textarea,
-  Tooltip,
-  useColorModeValue,
+  useToast,
   VStack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Heading,
+  useColorModeValue,
+  IconButton,
 } from "@chakra-ui/react";
 import { FaViber, FaTelegramPlane } from "react-icons/fa";
-import { BsPerson,BsFacebook  } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
 import { MdWhatsapp, MdOutlineEmail } from "react-icons/md";
 import Map from "./Map";
-import "../assets/text-colors.css"
+import "../assets/text-colors.css";
 
-const phoneNumber = '%2B380673251237'; // Replace with your phone number
+const phoneNumber = "%2B380673251237"; // Replace with your phone number
 const viberLink = `viber://chat?number=${phoneNumber}`;
 const whatsappLink = `https://wa.me/${phoneNumber}`;
 const telegramLink = `https://t.me/${phoneNumber}`;
 
-
 export default function Contacts({ id }) {
+  const form = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailText, setEmailText] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+
+  const getIsFormValid = () => {
+    return firstName && emailText && validateEmail(email);
+  };
+
+  const clearForm = () => {
+    setFirstName("");
+    setEmail("");
+    setEmailText("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!getIsFormValid()) {
+      toast({
+        title: "Помилка!",
+        description: "Будь ласка, перевірте.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    emailjs
+      .sendForm(EmailJSServiceID, EmailJSTemplateID, form.current, {
+        publicKey: EmailJSPublicKey,
+      })
+      .then(
+        () => {
+          setAlertMessage("Ваш лист було відправлено! 😀");
+          setIsError(false);
+          onOpen();
+        },
+        (error) => {
+          setAlertMessage("Щось пішло не так! Ваш лист не відправлено.😌");
+          setIsError(true);
+          onOpen();
+        }
+      );
+    clearForm();
+  };
 
   return (
     <section id={id} style={{ scrollSnapAlign: "start" }}>
@@ -64,6 +130,7 @@ export default function Contacts({ id }) {
                   justify="space-around"
                   direction={{ base: "row", md: "column" }}
                 >
+                  {/* TBD
                   <Tooltip closeOnClick={false} hasArrow>
                     <IconButton
                       aria-label="email"
@@ -77,9 +144,14 @@ export default function Contacts({ id }) {
                       }}
                       isRound
                     />
-                  </Tooltip>
+                  </Tooltip> */}
 
-                  <Box as="a" href={viberLink} target="_blank" rel="noopener noreferrer">
+                  <Box
+                    as="a"
+                    href={viberLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <IconButton
                       aria-label="viber"
                       variant="ghost"
@@ -87,35 +159,45 @@ export default function Contacts({ id }) {
                       fontSize="3xl"
                       icon={<FaViber />}
                       _hover={{
-                        bg: "pink.500",
+                        bg: "linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%);",
                         color: useColorModeValue("white", "gray.700"),
                       }}
                       isRound
                     />
                   </Box>
 
-                  <Box as="a" href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                  <Box
+                    as="a"
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <IconButton
                       aria-label="whatsapp"
                       variant="ghost"
                       size="lg"
                       icon={<MdWhatsapp size="28px" />}
                       _hover={{
-                        bg: "pink.500",
+                        bg: "linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%);",
                         color: useColorModeValue("white", "gray.700"),
                       }}
                       isRound
                     />
                   </Box>
 
-                  <Box as="a" href={telegramLink} target="_blank" rel="noopener noreferrer">
+                  <Box
+                    as="a"
+                    href={telegramLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <IconButton
                       aria-label="telegram"
                       variant="ghost"
                       size="lg"
                       icon={<FaTelegramPlane size="28px" />}
                       _hover={{
-                        bg: "pink.500",
+                        bg: "linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%);",
                         color: useColorModeValue("white", "gray.700"),
                       }}
                       isRound
@@ -130,65 +212,104 @@ export default function Contacts({ id }) {
                   color={useColorModeValue("gray.700", "whiteAlpha.900")}
                   shadow="base"
                 >
-                  <VStack spacing={5}>
-                    <FormControl isRequired>
-                      <FormLabel>Ваше ім'я</FormLabel>
+                  <form ref={form} onSubmit={handleSubmit}>
+                    <VStack spacing={5}>
+                      <FormControl isRequired>
+                        <FormLabel>Ваше ім'я</FormLabel>
 
-                      <InputGroup>
-                        <InputLeftElement>
-                          <BsPerson />
-                        </InputLeftElement>
-                        <Input
-                          type="text"
-                          name="name"
-                          placeholder="Ваше ім'я"
+                        <InputGroup>
+                          <InputLeftElement>
+                            <BsPerson />
+                          </InputLeftElement>
+                          <Input
+                            type="text"
+                            name="firstName"
+                            value={firstName}
+                            placeholder="Ваше ім'я"
+                            onChange={(e) => setFirstName(e.target.value)}
+                          />
+                        </InputGroup>
+                      </FormControl>
+
+                      <FormControl
+                        isRequired
+                        isInvalid={!validateEmail(email) && email !== ""}
+                      >
+                        <FormLabel>Email</FormLabel>
+
+                        <InputGroup>
+                          <InputLeftElement>
+                            <MdOutlineEmail />
+                          </InputLeftElement>
+                          <Input
+                            type="email"
+                            name="email"
+                            placeholder="Ваша електронна пошта"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
+                        </InputGroup>
+                        {!validateEmail(email) && email !== "" && (
+                          <FormErrorMessage>
+                            Email містить помилки!
+                          </FormErrorMessage>
+                        )}
+                      </FormControl>
+
+                      <FormControl isRequired>
+                        <FormLabel>Текст повідомлення</FormLabel>
+
+                        <Textarea
+                          name="emailText"
+                          placeholder="Текст повідомлення"
+                          rows={6}
+                          resize="none"
+                          value={emailText}
+                          onChange={(e) => setEmailText(e.target.value)}
                         />
-                      </InputGroup>
-                    </FormControl>
+                      </FormControl>
 
-                    <FormControl isRequired>
-                      <FormLabel>Email</FormLabel>
-
-                      <InputGroup>
-                        <InputLeftElement>
-                          <MdOutlineEmail />
-                        </InputLeftElement>
-                        <Input
-                          type="email"
-                          name="email"
-                          placeholder="Ваша електронна пошта"
-                        />
-                      </InputGroup>
-                    </FormControl>
-
-                    <FormControl isRequired>
-                      <FormLabel>Текст повідомлення</FormLabel>
-
-                      <Textarea
-                        name="message"
-                        placeholder="Текст повідомлення"
-                        rows={6}
-                        resize="none"
-                      />
-                    </FormControl>
-
-                    <Button
-                      bg="linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%);"
-                      color="white"
-                      _hover={{
-                        bg: "pink.500",
-                      }}
-                      width="full"
-                    >
-                     Надіслати нам листа!
-                    </Button>
-                  </VStack>
+                      <Button
+                        type="submit"
+                        bg="linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%)"
+                        color="white"
+                        _hover={{
+                          bg: !getIsFormValid()
+                            ? "linear-gradient(to right, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%)"
+                            : "linear-gradient(to left, #00950E 0%, #00FF29 25%, #FF8A08 50%, #FF00F0 65%, #4C02CF 100%)",
+                          cursor: !getIsFormValid() ? "not-allowed" : "pointer",
+                          opacity:!getIsFormValid() ? 0.3:1
+                        }}
+                        width="full"
+                        disabled={!getIsFormValid()}
+                      >
+                        Надіслати нам листа!
+                      </Button>
+                    </VStack>
+                  </form>
                 </Box>
               </Stack>
             </VStack>
           </Box>
         </Box>
       </Flex>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{isError ? "Error" : "Success"}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>{alertMessage}</ModalBody>
+          <ModalFooter>
+            <Button
+              colorScheme={isError ? "red" : "blue"}
+              mr={3}
+              onClick={onClose}
+            >
+              Закрити.
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </section>
   );
 }
