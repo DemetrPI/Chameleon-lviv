@@ -1,3 +1,4 @@
+// To be used later with customer account
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { SiLinkedin, SiMessenger } from "react-icons/si";

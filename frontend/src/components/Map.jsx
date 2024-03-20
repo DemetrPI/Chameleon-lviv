@@ -1,6 +1,6 @@
 import chameleonMarker from "../assets/chameleons/marker_map.png";
 import { Loader } from "@googlemaps/js-api-loader";
-import { ApiKey } from "../utils/googleMapAPIKey";
+import { ApiKey } from "../utils/APIKey";
 import { useEffect } from "react";
 import {Box} from  "@chakra-ui/react";
 

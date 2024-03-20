@@ -1,12 +1,13 @@
-import { Link as ScrollLink } from "react-scroll";
+import chameleonBlack from "../assets/chameleon_black.jpg";
+import chameleonWhite from "../assets/chameleon.jpg";import { Link as ScrollLink } from "react-scroll";
 import {
   IconButton,
   Box,
   CloseButton,
   Flex,
   Icon,
+  Image, 
   useColorModeValue,
-  Text,
   Drawer,
   DrawerContent,
   useColorMode,
@@ -35,6 +36,8 @@ const getLinkItems = (colorMode, toggleColorMode) => [
 const SidebarContent = ({ onClose, ...rest }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const LinkItems = getLinkItems(colorMode, toggleColorMode);
+  const logo = colorMode === "dark" ? chameleonBlack : chameleonWhite; 
+
   return (
     <Box
       transition="3s ease"
@@ -47,9 +50,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+      <Image src={logo} boxSize="50px" alt="Logo" /> {/* Adjust boxSize as needed */}
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -149,6 +150,10 @@ const NavItem = ({ icon, children, action, path, onClose, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const { colorMode } = useColorMode();
+  const logo = colorMode === "dark" ? chameleonBlack : chameleonWhite; 
+
+  
   return (
     <>
      <Flex
@@ -169,15 +174,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
-      <Text
-        display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
-        Logo
-      </Text>
+      <Image src={logo} boxSize="40px" alt="Logo" /> {/* Adjust boxSize as needed */}
       {/* user login block will be here TBD */}
     </Flex>
     </>

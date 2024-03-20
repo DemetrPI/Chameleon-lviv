@@ -84,7 +84,7 @@ export default function MainHero({ id }) {
               </Text>
               <br />
               <Text className="text-colors" as={"span"} fontSize={{base: "2xl", md: "3xl", lg: "4.5xl"}}>
-                Майстерня з відновлення взуття
+                Майстерня з відновлення шкіри.
               </Text>
             </Heading>
             <Text
