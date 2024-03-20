@@ -1,20 +1,46 @@
-@keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
   }
-  
-  .random-image {
-    position: fixed; /* Image will scroll with the page */
-    animation: fadeOut 2s forwards; /* Fades out the image over 2 seconds */
-    animation-delay: 3s; /* Starts the fade out after 3 seconds */
-    border: 1px solid #ccc; /* Card-like border */
-    border-radius: 8px; /* Rounded corners for the card-like look */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
-    transition: transform 0.2s; /* Smooth transition for the rotation */
-    z-index: 100;
+  to {
+    transform: translateX(0);
   }
-  
+}
+
+@keyframes shakeAndShrink {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+.random-image {
+  position: fixed;
+  animation: slideIn 0.5s forwards, fadeOut 2s forwards;
+  animation-delay: 3s;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* To indicate it's clickable */
+  z-index: 100;
+}

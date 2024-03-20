@@ -20,7 +20,7 @@ export default function Footer() {
   const address = "79036, Україна, м.Львів, вул. Хоткевича, буд. 6, кв. 84"; 
     return (
       <Box
-      p={4}
+      p={2}
       sx={{
         background: "linear-gradient(to right, rgba(0, 149, 14, 0.1) 0%, rgba(0, 255, 41, 0.1) 25%, rgba(255, 138, 8, 0.1) 50%, rgba(255, 0, 240, 0.1) 65%, rgba(76, 2, 207, 0.1) 100%)"
       }}
@@ -43,7 +43,7 @@ export default function Footer() {
           </Link>
         </Flex>
 
-        <Text textAlign="center" mb={{ base: 4, md: 0 }}>© 2024 Chameleon-Lviv. All rights reserved.</Text>
+        <Text textAlign="center" mb={{ base: 4, md: 0 }}>© 2024 Cameleon-Lviv.</Text>
 
         <Image src={logo} boxSize="50px" alt="Logo" alignSelf={{ base: "center", md: "flex-end" }} />
       </Container>

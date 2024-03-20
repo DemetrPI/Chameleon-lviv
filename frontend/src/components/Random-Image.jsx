@@ -1,53 +1,71 @@
+import React, { useEffect, useState } from 'react';
+import "../../src/assets/random-image.css";
 
-import "../../src/assets/random-image.css"
-// import React, { useEffect, useState } from 'react';
+function importAll(r) {
+  return r.keys().map(r);
+}
 
-
-// const imagesArray = [
-//   firstimage, secondimage, thirdimage
-//   // Add more image paths as needed
-// ];
+const imagesArray = importAll(require.context('../../src/assets/chameleons', false, /\.(png|jpe?g|svg)$/));
 
 const RandomImages = () => {
-//   const [visibleImages, setVisibleImages] = useState([]);
+  const [visibleImages, setVisibleImages] = useState([]);
 
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       if (visibleImages.length < 3) {
-//         const image = imagesArray[Math.floor(Math.random() * imagesArray.length)];
-//         const xPos = Math.random() * (window.innerWidth - 100); // Assuming image width of 100px
-//         const yPos = Math.random() * (window.innerHeight - 100); // Assuming image height of 100px
-//         const rotation = Math.random() * 20 - 10; // Random rotation between -10 and 10 degrees
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (visibleImages.length < 3) {
+        const imageIndex = Math.floor(Math.random() * imagesArray.length);
+        const image = imagesArray[imageIndex];
+        const xPos = Math.random() * (window.innerWidth - 100); 
+        const yPos = Math.random() * (window.innerHeight - 100);
+        const rotation = Math.random() * 20 - 10; // Random rotation between -10 and 10 degrees
 
-//         const newImage = {
-//           src: image,
-//           style: {
-//             left: `${xPos}px`,
-//             top: `${yPos}px`,
-//             transform: `rotate(${rotation}deg)`, // Apply random rotation
-//           },
-//           id: Date.now(), // Unique ID for key prop and removing later
-//         };
+        const newImage = {
+          src: image,
+          style: {
+            left: `${xPos}px`,
+            top: `${yPos}px`,
+            transform: `scale(0.8) rotate(${rotation}deg)`, // Apply scale and random rotation
+            transition: 'transform 0.5s',
+          },
+          id: Date.now(),
+        };
 
-//         setVisibleImages((prevImages) => [...prevImages, newImage]);
+        setVisibleImages(prevImages => [...prevImages, newImage]);
 
-//         // Schedule removal of this image
-//         setTimeout(() => {
-//           setVisibleImages((prevImages) => prevImages.filter((img) => img.id !== newImage.id));
-//         }, 5000); // 5 seconds = 3s visible + 2s fade out
-//       }
-//     }, 2000); // Check every 2 seconds
+        setTimeout(() => {
+          setVisibleImages(prevImages => prevImages.filter(img => img.id !== newImage.id));
+        }, 5000); // Adjust based on how long you want the image to stay before starting to fade out
+      }
+    }, 2000);
 
-//     return () => clearInterval(interval); // Cleanup on unmount
-//   }, [visibleImages]);
+    return () => clearInterval(interval);
+  }, [visibleImages]);
 
-//   return (
-//     <>
-//       {visibleImages.map((img) => (
-//         <img key={img.id} src={img.src} className="random-image" style={img.style} alt="" />
-//       ))}
-//     </>
-//   );
-// };
-}
+  const handleClick = (id) => {
+    setVisibleImages(prevImages =>
+      prevImages.map(img =>
+        img.id === id ? { ...img, style: { ...img.style, transform: 'scale(0)', transition: 'transform 0.5s' }} : img
+      )
+    );
+    setTimeout(() => {
+      setVisibleImages(prevImages => prevImages.filter(img => img.id !== id));
+    }, 500); // This ensures the image is removed after the shrink animation completes
+  };
+
+  return (
+    <>
+      {visibleImages.map(img => (
+        <img
+          key={img.id}
+          src={img.src}
+          className="random-image"
+          style={{ ...img.style, maxWidth: '100px', maxHeight: '100px' }}
+          alt=""
+          onClick={() => handleClick(img.id)}
+        />
+      ))}
+    </>
+  );
+};
+
 export default RandomImages;
