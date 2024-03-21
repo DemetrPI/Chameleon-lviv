@@ -27,8 +27,8 @@ useEffect(() => {
   });
 
   const center = {
-    lat: 49.795556361046614,
-    lng: 24.051039025841092,
+    lat: 49.83459784375512,
+    lng: 24.03552362283837,
   };
 
   async function initMap() {
