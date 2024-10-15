@@ -57,7 +57,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="8" mb="10" justifyContent="space-between">
+      <Flex h="20" alignItems="center" mx="8" mb="10" mt="20" justifyContent="space-between">
         <Image src={logo} boxSize="10rem" alt="Logo" borderRadius={"10%"} />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
