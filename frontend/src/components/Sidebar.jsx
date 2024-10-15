@@ -1,12 +1,12 @@
 import chameleonBlack from "../assets/chameleon_black.jpg";
-import chameleonWhite from "../assets/chameleon.jpg";import { Link as ScrollLink } from "react-scroll";
+import chameleonWhite from "../assets/chameleon.jpg"; import { Link as ScrollLink } from "react-scroll";
 import {
   IconButton,
   Box,
   CloseButton,
   Flex,
   Icon,
-  Image, 
+  Image,
   useColorModeValue,
   Drawer,
   DrawerContent,
@@ -16,11 +16,13 @@ import {
 import { FiHome, FiMenu } from "react-icons/fi";
 import { BsEmojiSunglasses, BsMoonStars } from "react-icons/bs";
 import { GrGallery } from "react-icons/gr";
+import { GiChameleonGlyph } from "react-icons/gi";
 import { FaMailBulk } from "react-icons/fa";
 import { GiSteeltoeBoots } from "react-icons/gi";
 import { VscFeedback } from "react-icons/vsc";
+import { useChameleons } from "../utils/chameleonsContext";
 
-const getLinkItems = (colorMode, toggleColorMode) => [
+const getLinkItems = (colorMode, toggleColorMode, toggleChameleons, chameleonsVisible) => [
   { name: "Головна", icon: FiHome, path: "home" },
   { name: "Продукція і послуги", icon: GiSteeltoeBoots, path: "features" },
   { name: "Галерея", icon: GrGallery, path: "gallery" },
@@ -31,12 +33,18 @@ const getLinkItems = (colorMode, toggleColorMode) => [
     action: toggleColorMode, // Use an action for theme toggle
     icon: colorMode === "dark" ? BsEmojiSunglasses : BsMoonStars, // Dynamically set the icon
   },
+  {
+    name: chameleonsVisible ? "Прибрати хамелеонів!" : "Впустити хамелеонів!",
+    action: toggleChameleons,
+    icon: GiChameleonGlyph
+  }
 ];
 
 const SidebarContent = ({ onClose, ...rest }) => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const LinkItems = getLinkItems(colorMode, toggleColorMode);
-  const logo = colorMode === "dark" ? chameleonBlack : chameleonWhite; 
+  const { toggleChameleons, chameleonsVisible } = useChameleons();
+  const LinkItems = getLinkItems(colorMode, toggleColorMode, toggleChameleons, chameleonsVisible);
+  const logo = colorMode === "dark" ? chameleonBlack : chameleonWhite;
 
   return (
     <Box
@@ -49,8 +57,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-      <Image src={logo} boxSize="50px" alt="Logo" /> {/* Adjust boxSize as needed */}
+      <Flex h="20" alignItems="center" mx="8" mb="10" justifyContent="space-between">
+        <Image src={logo} boxSize="10rem" alt="Logo" borderRadius={"10%"} />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -58,9 +66,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
           key={link.name}
           icon={link.icon}
           path={link.path}
-          action={link.name === "Тема" ? link.action : undefined}
+          action={link.action}
           onClose={onClose}
-          
+
         >
           {link.name}
         </NavItem>
@@ -150,33 +158,29 @@ const NavItem = ({ icon, children, action, path, onClose, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const { colorMode } = useColorMode();
-  const logo = colorMode === "dark" ? chameleonBlack : chameleonWhite; 
 
-  
   return (
     <>
-     <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 4 }}
-      height={{ base: 20, lg: 0 }}
-      alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent={{ base: "space-between", md: "flex-end" }}
-      {...rest}
-    >
-      <IconButton
-        display={{ base: "flex", md: "none" }}
-        onClick={onOpen}
-        variant="outline"
-        aria-label="open menu"
-        icon={<FiMenu />}
-      />
-      <Image src={logo} boxSize="40px" alt="Logo" /> {/* Adjust boxSize as needed */}
-      {/* user login block will be here TBD */}
-    </Flex>
+      <Flex
+        ml={{ base: 0, md: 60 }}
+        px={{ base: 4, md: 4 }}
+        height={{ base: 20, lg: 0 }}
+        alignItems="center"
+        bg={useColorModeValue("white", "gray.900")}
+        borderBottomWidth="1px"
+        borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+        justifyContent={{ base: "space-between", md: "flex-end" }}
+        {...rest}
+      >
+        <IconButton
+          display={{ base: "flex", md: "none" }}
+          onClick={onOpen}
+          variant="outline"
+          aria-label="open menu"
+          icon={<FiMenu />}
+        />
+        {/* user login block will be here TBD */}
+      </Flex>
     </>
   );
 };

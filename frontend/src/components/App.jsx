@@ -7,20 +7,23 @@ import Contacts from "./Contacts";
 import RandomImages from "./Random-Image";
 import Gallery from "./Gallery";
 import Footer from "./Footer";
+import { ChameleonsProvider } from "../utils/chameleonsContext";
 
 
 function App() {
   return (
     <>
-      <RandomImages/>
-    <Sidebar>
-      <MainHero id="home" />
-      <Features id="features" />
-      <Gallery id="gallery" />
-      <Testimonials id="testimonials" />
-      <Contacts id="contacts" />
-      <Footer/>
-    </Sidebar>
+      <ChameleonsProvider>
+        <RandomImages />
+        <Sidebar>
+          <MainHero id="home" />
+          <Features id="features" />
+          <Gallery id="gallery" />
+          <Testimonials id="testimonials" />
+          <Contacts id="contacts" />
+          <Footer />
+        </Sidebar>
+      </ChameleonsProvider>
     </>
   );
 }

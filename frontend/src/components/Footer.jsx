@@ -14,7 +14,7 @@ import chameleonWhite from "../assets/chameleon.jpg";
 export default function Footer() {
   const { colorMode } = useColorMode();
   const logo = colorMode === "dark" ? chameleonBlack : chameleonWhite;
-  const designerURL = "https://www.dmytro.biz.pl/";
+  const designerURL = "https://cv.i-dmytro.pl/";
   const phoneNumber = "+38 (067) 325-12-37";
   const address = "790005, Україна, м.Львів, вул. Зелена, 5"; 
     return (
@@ -37,11 +37,11 @@ export default function Footer() {
           <Link href={`tel:${phoneNumber}`}>{phoneNumber}</Link>
           <Text>{address}</Text>
           <Link href={designerURL} isExternal >
-            Designed by Dmytro
+            Designed & coded by Dmytro
           </Link>
         </Flex>
         <Text textAlign="center" mb={{ base: 4, md: 0 }}>© 2024 Cameleon-Lviv.</Text>
-        <Image src={logo} boxSize="50px" alt="Logo" alignSelf={{ base: "center", md: "flex-end" }} />
+        <Image src={logo} boxSize="50px" alt="Logo" alignSelf={{ base: "center", md: "flex-end" }} borderRadius={"10%"} />
       </Container>
     </Box>
   );

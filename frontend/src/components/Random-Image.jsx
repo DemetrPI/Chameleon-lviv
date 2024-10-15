@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useChameleons } from '../utils/chameleonsContext';
 import "../../src/assets/random-image.css";
 
 function importAll(r) {
@@ -9,13 +10,17 @@ const imagesArray = importAll(require.context('../../src/assets/chameleons', fal
 
 const RandomImages = () => {
   const [visibleImages, setVisibleImages] = useState([]);
+  const { chameleonsVisible } = useChameleons();
+  
 
   useEffect(() => {
+    if (!chameleonsVisible) return;
+
     const interval = setInterval(() => {
       if (visibleImages.length < 3) {
         const imageIndex = Math.floor(Math.random() * imagesArray.length);
         const image = imagesArray[imageIndex];
-        const xPos = Math.random() * (window.innerWidth - 100); 
+        const xPos = Math.random() * (window.innerWidth - 100);
         const yPos = Math.random() * (window.innerHeight - 100);
         const rotation = Math.random() * 20 - 10; // Random rotation between -10 and 10 degrees
 
@@ -39,18 +44,21 @@ const RandomImages = () => {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [visibleImages]);
+  }, [visibleImages, chameleonsVisible]);
 
   const handleClick = (id) => {
     setVisibleImages(prevImages =>
       prevImages.map(img =>
-        img.id === id ? { ...img, style: { ...img.style, transform: 'scale(0)', transition: 'transform 0.5s' }} : img
+        img.id === id ? { ...img, style: { ...img.style, transform: 'scale(0)', transition: 'transform 0.5s' } } : img
       )
     );
     setTimeout(() => {
       setVisibleImages(prevImages => prevImages.filter(img => img.id !== id));
     }, 500); // This ensures the image is removed after the shrink animation completes
   };
+
+   // Don't render any images if chameleons are not visible
+   if (!chameleonsVisible) return null;
 
   return (
     <>

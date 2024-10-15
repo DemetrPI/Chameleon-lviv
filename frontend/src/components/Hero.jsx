@@ -39,7 +39,7 @@ export default function MainHero({ id }) {
             borderWidth="1px"
             borderRadius="lg"
             overflow="hidden"
-            boxShadow="xl"
+            boxShadow="2xl"
             m={2}
           >
             <Image
@@ -51,6 +51,7 @@ export default function MainHero({ id }) {
               left={0}
               width="100%"
               height="100%"
+
             />
           </Box>
         </Flex>
